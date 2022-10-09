@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.server.nodes.NodesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="Select Server"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@mipmap/ic_back"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::onBackPressed}"
+            android:padding="0dp"
+            android:stateListAnimator="@null"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_nodes"
+            style="@style/ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@id/btn_connect"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_connect"
+            android:layout_width="164dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="88.5dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::connect}"
+            android:stateListAnimator="@null"
+            android:text="Connect"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:backgroundTint="#6BEB77"
+            app:cornerRadius="999dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText,SpUsage"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

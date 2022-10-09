@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.browser.BrowserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@drawable/bg_splash">
+
+        <FrameLayout
+            android:id="@+id/tab_content_root"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/web_navigation_bar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/web_navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60.5dp"
+            android:background="@{model.curShowingHomePage ? @drawable/bg_web_nav_home : @drawable/bg_web_nav_result}"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_web_back"
+                style="@style/MaterialButtonClear"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:drawableLeft="@mipmap/ic_web_back"
+                android:onClick="@{model::goBack}"
+                android:padding="6dp"
+                android:scaleType="fitXY"
+                app:backgroundTint="@color/translucent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_web_forward"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_web_forward"
+                style="@style/MaterialButtonClear"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:drawableLeft="@mipmap/ic_web_forward"
+                android:onClick="@{model::goForward}"
+                android:padding="6dp"
+                android:scaleType="fitXY"
+                app:backgroundTint="@color/translucent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_web_home"
+                app:layout_constraintStart_toEndOf="@id/btn_web_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_web_home"
+                style="@style/MaterialButtonClear"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:drawableLeft="@mipmap/ic_web_home"
+                android:onClick="@{model::goHome}"
+                android:padding="6dp"
+                android:scaleType="fitXY"
+                app:backgroundTint="@color/translucent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_web_tab_manager"
+                app:layout_constraintStart_toEndOf="@id/btn_web_forward"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_web_tab_manager"
+                style="@style/MaterialButtonClear"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:drawableLeft="@mipmap/ic_web_tabs"
+                android:onClick="@{model::goTabManager}"
+                android:padding="6dp"
+                android:scaleType="fitXY"
+                app:backgroundTint="@color/translucent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_more"
+                app:layout_constraintStart_toEndOf="@id/btn_web_home"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:gravity="center"
+                android:text="@{model.totalTabCount}"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                app:layout_constraintBottom_toBottomOf="@id/btn_web_tab_manager"
+                app:layout_constraintStart_toStartOf="@id/btn_web_tab_manager"
+                app:layout_constraintTop_toTopOf="@id/btn_web_tab_manager"
+                tools:ignore="SpUsage"
+                tools:text="99+" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_more"
+                style="@style/MaterialButtonClear"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/ic_more"
+                android:onClick="@{model::showMore}"
+                android:padding="6dp"
+                android:scaleType="fitXY"
+                app:backgroundTint="@color/translucent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_web_tab_manager"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.gms.ads.nativead.NativeAdView
+    android:id="@+id/n_native_view"
+    android:layout_width="match_parent"
+    android:layout_height="249.5dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/n_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.google.android.gms.ads.nativead.MediaView
+            android:id="@+id/n_media_view"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="23dp"
+            android:layout_height="14dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@id/n_media_view"
+            app:layout_constraintRight_toRightOf="@id/n_media_view"
+            app:srcCompat="@mipmap/ic_ad_tag_r_b" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/n_icon_view"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="11dp"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="@id/n_media_view"
+            app:layout_constraintTop_toBottomOf="@id/n_media_view"
+            app:round="8dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/n_title_view"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="11dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toRightOf="@id/n_icon_view"
+            app:layout_constraintRight_toLeftOf="@id/n_action_view"
+            app:layout_constraintTop_toTopOf="@id/n_icon_view"
+            tools:ignore="SpUsage"
+            tools:text="Cut the rope: Magic MagicMagicMagicMagicMagicMagicMagicMagic" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/n_body_view"
+            android:layout_width="0dp"
+            android:layout_height="18dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="#B6B6B6"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/n_icon_view"
+            app:layout_constraintLeft_toLeftOf="@id/n_title_view"
+            app:layout_constraintRight_toRightOf="@id/n_title_view"
+            app:layout_constraintTop_toBottomOf="@id/n_title_view"
+            tools:ignore="SpUsage"
+            tools:text="Press the spacebar and want toress the spacebar and want toress the spacebar and want to" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/n_action_view"
+            style="@style/MaterialButtonClear"
+            android:layout_width="78dp"
+            android:textSize="14sp"
+            android:layout_height="33dp"
+            android:backgroundTint="#242424"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/n_icon_view"
+            app:layout_constraintRight_toRightOf="@id/n_media_view"
+            app:layout_constraintTop_toTopOf="@id/n_icon_view"
+            tools:text="Install" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.gms.ads.nativead.NativeAdView>

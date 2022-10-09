@@ -1,0 +1,4 @@
+-keep class com.github.shadowsocks.** {*;}
+-dontwarn com.github.shadowsocks.**
+-dontwarn com.lxj.xpopup.widget.**
+-keep class com.lxj.xpopup.widget.**{*;}

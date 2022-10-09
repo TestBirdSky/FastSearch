@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.R" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.server.nodes.ItemNode" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_item_node">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/iv_country_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="7dp"
+            android:scaleType="fitXY"
+            app:country_src="@{model.serverNode.country}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_server" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_server_node_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@{model.serverNode.nodeName}"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@id/iv_checked"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/iv_country_logo"
+            tools:ignore="SpUsage"
+            tools:text="Fast Server" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_checked"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="fitXY"
+            app:compat_src="@{model.checked ? R.mipmap.ic_node_chcked : R.mipmap.ic_node_default}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_node_default" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.browser.tab.manager.TabManageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1E1E1E">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tab_manage"
+            style="@style/ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="15dp"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintBottom_toTopOf="@id/btn_web_add_tab"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_web_add_tab"
+            style="@style/MaterialButtonClear"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="15dp"
+            android:drawableLeft="@mipmap/ic_web_add_tab"
+            android:onClick="@{model::addTab}"
+            android:padding="6dp"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/MaterialButtonClear"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:onClick="@{model::finishActivity}"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:typeface="sans"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintBottom_toBottomOf="@id/btn_web_add_tab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_web_add_tab"
+            tools:ignore="HardcodedText,SpUsage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

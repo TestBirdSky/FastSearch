@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="tool.browser.fast.browser.readlistpage.ReadListUiBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        tool:background="@color/black">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="13dp"
+                app:imageUrl="@{data.iconUrl}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="@{data.title}"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_logo"
+                app:layout_constraintTop_toTopOf="@id/iv_logo"
+                tool:text="Google" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_host"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="@{data.host}"
+                android:textColor="#AFACAC"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+                app:layout_constraintLeft_toRightOf="@id/iv_logo"
+                tool:text="www.google.com" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:background="#605E5E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/tv_host"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

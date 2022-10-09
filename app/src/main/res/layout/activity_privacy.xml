@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.setting.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="Privacy Agreement"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@mipmap/ic_back"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::onBackPressed}"
+            android:padding="0dp"
+            android:stateListAnimator="@null"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+        <WebView
+            android:id="@+id/wv_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

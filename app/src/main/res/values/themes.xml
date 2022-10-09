@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Theme.FastSearch" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:background">@drawable/bg_splash</item>
+    </style>
+</resources>

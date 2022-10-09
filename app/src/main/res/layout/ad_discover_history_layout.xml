@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/n_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        tools:visibility="visible">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ad_view"
+            android:layout_width="23dp"
+            android:layout_height="14.5dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="#FECB19"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintBottom_toBottomOf="@id/n_title_view"
+            app:layout_constraintLeft_toRightOf="@id/n_title_view"
+            app:layout_constraintRight_toLeftOf="@id/n_action_view"
+            app:layout_constraintTop_toTopOf="@id/n_title_view">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="AD"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/n_icon_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:round="8dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/n_title_view"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="11dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toRightOf="@id/n_icon_view"
+            app:layout_constraintRight_toLeftOf="@id/ad_view"
+            app:layout_constraintTop_toTopOf="@id/n_icon_view"
+            tools:ignore="SpUsage"
+            tools:text="Cut the rope: Magic MagicMagicMagicMagicMagicMagicMagicMagic" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/n_body_view"
+            android:layout_width="0dp"
+            android:layout_height="18dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="#B6B6B6"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/n_icon_view"
+            app:layout_constraintLeft_toLeftOf="@id/n_title_view"
+            app:layout_constraintRight_toRightOf="@id/n_title_view"
+            app:layout_constraintTop_toBottomOf="@id/n_title_view"
+            tools:ignore="SpUsage"
+            tools:text="Press the spacebar and want toress the spacebar and want toress the spacebar and want to" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/n_action_view"
+            style="@style/MaterialButtonClear"
+            android:layout_width="78dp"
+            android:layout_height="33dp"
+            android:backgroundTint="#6BEB77"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="14sp"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Install" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.gms.ads.nativead.NativeAdView>

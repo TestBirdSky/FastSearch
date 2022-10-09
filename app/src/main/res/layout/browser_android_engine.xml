@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.browser.engine.WebEngineViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_web_home"
+            style="@style/MaterialButtonClear.Icon"
+            android:layout_width="28.79dp"
+            android:layout_height="28.64dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@mipmap/ic_web_home"
+            android:onClick="@{model::goHome}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_web_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_web_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_web_title"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/bg_web_search_et"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:onClick="@{model::searchWithDef}"
+            android:paddingStart="19.54dp"
+            android:paddingEnd="19.54dp"
+            android:singleLine="true"
+            android:text="@{model.webTitle}"
+            android:textColor="#242424"
+            android:textColorHint="#AFACAC"
+            android:textSize="13.68dp"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintEnd_toStartOf="@id/btn_clear"
+            app:layout_constraintStart_toEndOf="@id/btn_web_home"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage"
+            tools:text="https://sss.cc" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:onClick="@{model::search}"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@id/tv_web_title"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintEnd_toStartOf="@id/btn_refresh"
+            app:layout_constraintTop_toTopOf="@id/tv_web_title"
+            app:srcCompat="@mipmap/ic_clear" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_refresh"
+            android:layout_width="54dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_web_refresh"
+            android:onClick="@{model::refreshWeb}"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@id/tv_web_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_web_title"
+            app:srcCompat="@mipmap/ic_web_refresh" />
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="7.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_web_title" />
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:progress="@{model.webLoadProgress}"
+            android:visibility="@{model.webLoadProgress &lt;= 0 || model.webLoadProgress >= 100 ? View.GONE : View.VISIBLE}"
+            app:layout_constraintTop_toTopOf="@id/web_view"
+            tools:progress="50" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

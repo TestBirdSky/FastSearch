@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.setting.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:text="Setting"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@mipmap/ic_back"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::onBackPressed}"
+            android:padding="0dp"
+            android:stateListAnimator="@null"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:drawableLeft="@mipmap/ic_email"
+            android:drawableRight="@mipmap/ic_more"
+            android:gravity="center_vertical|start"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openContactUs}"
+            android:stateListAnimator="@null"
+            android:text="Contact us"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:drawableLeft="@mipmap/ic_privacy"
+            android:drawableRight="@mipmap/ic_more"
+            android:gravity="center_vertical|start"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openPrivacy}"
+            android:stateListAnimator="@null"
+            android:text="Privacy agreement"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintTop_toBottomOf="@id/btn_contact_us"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_search_engine"
+            app:layout_constraintTop_toTopOf="@id/btn"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_privacy"
+            app:layout_constraintBottom_toBottomOf="@id/btn"
+            android:layout_height="30dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:drawableRight="@mipmap/ic_more"
+            android:layout_marginStart="-8dp"
+            android:gravity="center_vertical|start"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openEngineSetting}"
+            android:stateListAnimator="@null"
+            android:text="Search engine"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            app:layout_constraintHorizontal_weight="1"
+            app:backgroundTint="@color/translucent"
+            app:layout_constraintLeft_toRightOf="@id/iv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_privacy"
+            tools:ignore="HardcodedText,SpUsage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

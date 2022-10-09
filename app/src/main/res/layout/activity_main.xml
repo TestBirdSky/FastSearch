@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="tool.browser.fast.utils.BindingAdaptUtil" />
+
+        <import type="tool.browser.fast.server.State" />
+
+        <variable
+            name="model"
+            type="tool.browser.fast.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="21dp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            app:adapt_status_bar="@{BindingAdaptUtil.STATUS_BAR_ADAPT_MODE_TOP_MARGIN}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_setting"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="20dp"
+            android:drawableLeft="@mipmap/ic_setting"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openSetting}"
+            android:padding="0dp"
+            android:stateListAnimator="@null"
+            app:backgroundTint="@color/translucent"
+            app:is_enabled="@{model.enabled}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_app_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_server_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:connect_time_unit="@{model.connectTime}"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+            tools:ignore="SpUsage"
+            tools:text="00:00:00" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/iv_country_logo"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:scaleType="fitXY"
+            app:country_src="@{model.serverNode.country}"
+            app:layout_constraintEnd_toStartOf="@id/tv_server_node_name"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_server_time"
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@mipmap/ic_server" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_server_node_name"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@{model.serverNode.nodeName}"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@id/iv_country_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_country_logo"
+            app:layout_constraintTop_toTopOf="@id/iv_country_logo"
+            tools:ignore="SpUsage"
+            tools:text="Fast Server" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_connecting"
+            android:layout_width="238dp"
+            android:layout_height="238dp"
+            android:layout_marginTop="9dp"
+            android:onClick="@{model::toggleServer}"
+            app:is_enabled="@{model.enabled}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_country_logo"
+            app:lottie_fileName="connecting.json"
+            app:lottie_imageAssetsFolder="images"
+            app:lottie_loop="true"
+            app:lottie_toggle="@{model.connectState}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_server_state"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="118dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:connect_state_text="@{model.connectState}"
+            app:layout_constraintBottom_toBottomOf="@id/lottie_connecting"
+            app:layout_constraintEnd_toEndOf="@id/lottie_connecting"
+            app:layout_constraintStart_toStartOf="@id/lottie_connecting"
+            app:layout_constraintTop_toTopOf="@id/lottie_connecting"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="SpUsage"
+            tools:text="Connect" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_server"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="10dp"
+            android:drawableLeft="@mipmap/ic_server"
+            android:ellipsize="end"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openServers}"
+            android:singleLine="true"
+            android:stateListAnimator="@null"
+            android:text="Server"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:backgroundTint="#333436"
+            app:cornerRadius="12dp"
+            app:is_enabled="@{model.enabled}"
+            app:layout_constraintEnd_toStartOf="@id/btn_browser"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottie_connecting"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_browser"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="20dp"
+            android:drawableLeft="@mipmap/ic_browser"
+            android:ellipsize="end"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{model::openBrowser}"
+            android:singleLine="true"
+            android:stateListAnimator="@null"
+            android:text="Browser"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:backgroundTint="#333436"
+            app:cornerRadius="12dp"
+            app:is_enabled="@{model.enabled}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/btn_server"
+            app:layout_constraintTop_toBottomOf="@id/lottie_connecting"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.gms.ads.nativead.NativeAdView
+            android:id="@+id/n_native_view"
+            android:layout_width="match_parent"
+            android:layout_height="249.5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            app:corner_out_provider="@{12}"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/n_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <com.google.android.gms.ads.nativead.MediaView
+                    android:id="@+id/n_media_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="177dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    app:corner_out_provider="@{8}"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="23dp"
+                    android:layout_height="14dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@id/n_media_view"
+                    app:layout_constraintRight_toRightOf="@id/n_media_view"
+                    app:srcCompat="@mipmap/ic_ad_tag_r_b" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/n_icon_view"
+                    android:layout_width="39dp"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="11dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintLeft_toLeftOf="@id/n_media_view"
+                    app:layout_constraintTop_toBottomOf="@id/n_media_view"
+                    app:round="8dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/n_title_view"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="11dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|start"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintLeft_toRightOf="@id/n_icon_view"
+                    app:layout_constraintRight_toLeftOf="@id/n_action_view"
+                    app:layout_constraintTop_toTopOf="@id/n_icon_view"
+                    tools:ignore="SpUsage"
+                    tools:text="Cut the rope: Magic MagicMagicMagicMagicMagicMagicMagicMagic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/n_body_view"
+                    android:layout_width="0dp"
+                    android:layout_height="18dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="#B6B6B6"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/n_icon_view"
+                    app:layout_constraintLeft_toLeftOf="@id/n_title_view"
+                    app:layout_constraintRight_toRightOf="@id/n_title_view"
+                    app:layout_constraintTop_toBottomOf="@id/n_title_view"
+                    tools:ignore="SpUsage"
+                    tools:text="Press the spacebar and want toress the spacebar and want toress the spacebar and want to" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/n_action_view"
+                    style="@style/MaterialButtonClear"
+                    android:layout_width="78dp"
+                    android:layout_height="33dp"
+                    android:backgroundTint="#242424"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="@id/n_icon_view"
+                    app:layout_constraintRight_toRightOf="@id/n_media_view"
+                    app:layout_constraintTop_toTopOf="@id/n_icon_view"
+                    tools:text="Install" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/n_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/n_ad_holder_home" />
+        </com.google.android.gms.ads.nativead.NativeAdView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
